@@ -16,11 +16,17 @@ class Event(models.Model):
     proprietaire=models.ForeignKey(User,on_delete=models.CASCADE)
     is_free=models.BooleanField(default=True)
 
+
     phone_number = PhoneNumberField(blank=True)
     disable=models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return f"Event  <{self.title}>"
 
 
 
 class EventParticipation(models.Model):
     event=models.ForeignKey(Event,on_delete=models.CASCADE)
+    participers=models.ManyToManyField(User)
 

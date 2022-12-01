@@ -90,3 +90,7 @@ class User(AbstractBaseUser):
     @property
     def date_joined_(self):
         return self.date_joined
+
+    def get_all_permissions(user=None):
+        if user.is_admin:
+            return set()
