@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    Hi
-</body>
-</html>
+{% extends 'base_account.html'%}
+{% load static%}
+{%block title%}IFRI | LOGIN{%endblock%}
+{%block content%}
+        <h2 class="mt-5 font-bold text-xl">Inscription</h2>
+
+
+            <div class="h-full py-5 flex justify-center items-center">
+                <form  method="post">
+                    {% csrf_token%}
+
+                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                            <div>
+                                <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nom(s)</label>
+                                <input name="nom" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="John" required>
+                            </div>
+                            <div>
+                                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Prénom(s)</label>
+                                <input name="prenom" type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Doe" required>
+                            </div>
+
+
+
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email </label>
+                            <input name="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="john.doe@company.com" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 text-white">Password</label>
+                            <input name="password1" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="•••••••••" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">Confirm password</label>
+                            <input name="password2" type="password" id="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="•••••••••" required>
+                        </div>
+
+
+
+
+
+
+
+
+
+                    <input type="submit" value="Valider" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"/>
+
+                </form>
+
+            </div>
+
+            <h2 class="text-sm text-gray-400 mt-5">Vous avez déja un compte ? <a href="{% url 'login'%}" class="text-blue-700">Connexion</a></h2>
+
+
+{%endblock%}
+
+
+
+
+
+
+
+
+

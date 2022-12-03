@@ -11,6 +11,7 @@ def register(request):
     form=UserForm()
     if request.method=='POST':
         #type=request.POST.get('type')
+        print(request.POST)
 
         form=UserForm(data=request.POST)
 

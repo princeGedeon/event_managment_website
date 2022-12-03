@@ -51,7 +51,8 @@ class MyUserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-
+    nom=models.CharField(max_length=200,default='')
+    prenom=models.CharField(max_length=200,default='')
     email = models.EmailField(unique=True, blank=True)
     #phone=models.CharField(max_length=15,blank=True,null=True)
     type=models.CharField(choices=Type.choices,max_length=255,default=Type.ETUDIANT)
