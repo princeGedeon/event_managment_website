@@ -12,11 +12,14 @@ class Event(models.Model):
     title=models.CharField(max_length=150)
     image=models.ImageField(default="default/index.jpeg")
     description=models.TextField()
+    prix=models.CharField(max_length=10,default="0")
     end_register_date=models.DateTimeField(verbose_name="Date de fin d'inscription")
+    date_debut=models.DateField(auto_now=True)
+    date_fin=models.DateField(auto_now=True)
     gerants=models.ManyToManyField(User,related_name="gerants")
     proprietaire=models.ForeignKey(User,on_delete=models.CASCADE)
     is_free=models.BooleanField(default=True)
-    slug=models.SlugField(default="")
+    slug=models.SlugField(default="",null=True,blank=True)
 
 
     phone_number = PhoneNumberField(blank=True)
