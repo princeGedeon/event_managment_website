@@ -1,7 +1,12 @@
 {% extends 'base.html'%}
 {% load static%}
 {%block title%}IFRI | Paiement{%endblock%}
+{%block script%}
+
+{% endblock%}
+
 {%block content%}
+
 
  <!-- Debut -->
 
@@ -50,9 +55,9 @@
               <div class="w-1/2 min-h-fit py-5">
                 <h1 class="text-xl mb-3">Moyens de paiement</h1>
                 <div class="flex flex-row gap-5 items-center">
-                  <a  class="hover:scale-95 focus:scale-110  px-3 border rounded-full min-h-[40px] min-w-[80px]" href="#">
+                  <button type="submit" id="pay"  class="hover:scale-95 focus:scale-110  px-3 border rounded-full min-h-[40px] min-w-[80px]" href="#">
                         <img  class="w-full h-full object-cover" src="{% static 'img/151-1514348_mtn-momo-logo-mobile-money-logo-png-transparent 1.png'%}" alt="">
-                  </a>
+                  </button>
                   <a  class="hover:scale-95 focus:scale-110 py-2 px-3 border rounded-full min-h-[40px] min-w-[80px] flex" href="#">
 
                       <img class="  w-full h-full object-cover"  src="{% static 'img/FedaPay-outline.png'%}" alt="">
@@ -71,4 +76,20 @@
 
 
 
+{%block bottom_script%}
+   <script>
+const elt = document.getElementById('pay');    // On récupère l'élément sur lequel on veut détecter le clic
+elt.addEventListener('click', function() {          // On écoute l'événement click
+
+
+
+<kkiapay-widget sandbox="true" amount="1" key="efea12568de93b899b468ac1008e0bf8d6a0ed7c"
+            callback="https://kkiapay-redirect.com" />
+
+                  // On change le contenu de notre élément pour afficher "C'est cliqué !"
+});
+
+
+</script>
+{% endblock%}
 
