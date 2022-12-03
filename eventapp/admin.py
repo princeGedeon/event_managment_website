@@ -1,7 +1,12 @@
 from django.contrib import admin
 
 # Register your models here.
-from eventapp.models import Event
+from eventapp.models import Event,Sponsor
+
+
+@admin.register(Sponsor)
+class SponsorAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Event)

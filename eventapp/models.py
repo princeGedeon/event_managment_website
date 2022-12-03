@@ -7,6 +7,12 @@ from django.utils.text import slugify
 
 from phonenumber_field.modelfields import PhoneNumberField
 
+class Sponsor(models.Model):
+    nom=models.CharField(max_length=200)
+    image=models.ImageField(upload_to="sponsor_image")
+
+    def __str__(self):
+        return f"<Sponsor {self.nom}"
 
 class Event(models.Model):
     title=models.CharField(max_length=150)
@@ -17,6 +23,7 @@ class Event(models.Model):
     date_debut=models.DateField(auto_now=True)
     date_fin=models.DateField(auto_now=True)
     gerants=models.ManyToManyField(User,related_name="gerants")
+    sponsors=models.ManyToManyField(Sponsor,related_name="sponsors")
     proprietaire=models.ForeignKey(User,on_delete=models.CASCADE)
     is_free=models.BooleanField(default=True)
     slug=models.SlugField(default="",null=True,blank=True)
@@ -32,7 +39,7 @@ class Event(models.Model):
     def save(self, *args, **kwargs):
 
         if not self.slug:
-            self.slug = slugify( self.title+'_'+ str(self.pk))
+            self.slug = slugify( self.title+'_'+ str(self.id))
         super().save(*args, **kwargs)
 
 class EventParticipation(models.Model):

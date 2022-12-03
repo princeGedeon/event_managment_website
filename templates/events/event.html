@@ -34,7 +34,7 @@
         <div class="min-h-fit grid grid-cols-1 sm:grid-cols-2 gap-10 ">
 
             {% for event in events%}
-            <a href="./detail.html">
+            <a href="{% url 'detail_event' event.slug %}">
                 <div  class=" pb-8 md:pb-0 flex justify-between gap-5 transition-transform ease-in-out  rounded-md shadow-sm hover:shadow-md hover:scale-110 w-full border min-h-[150px] flex-col xl:flex-row">
                     <img class="object-cover w-full min-h-[150px] sm:min-w-2/3 w-full" src="{{event.image.url}}" alt="">
                     <div class="w-full sm:w-fit min-w-[200px] px-5 md:py-5">
